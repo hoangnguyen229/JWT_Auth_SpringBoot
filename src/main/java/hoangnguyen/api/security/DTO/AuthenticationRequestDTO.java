@@ -1,4 +1,4 @@
-package hoangnguyen.api.security.auth;
+package hoangnguyen.api.security.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationRequest {
+public class AuthenticationRequestDTO {
     private String email;
     String password;
 }

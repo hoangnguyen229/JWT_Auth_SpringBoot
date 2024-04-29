@@ -1,15 +1,15 @@
 package hoangnguyen.api.security;
 
 
-import hoangnguyen.api.security.auth.AuthenticationService;
-import hoangnguyen.api.security.auth.RegisterRequest;
+import hoangnguyen.api.security.services.AuthenticationService;
+import hoangnguyen.api.security.DTO.RegisterRequestDTO;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import static hoangnguyen.api.security.user.Role.ADMIN;
-import static hoangnguyen.api.security.user.Role.MANAGER;
+import static hoangnguyen.api.security.enums.Role.ADMIN;
+import static hoangnguyen.api.security.enums.Role.MANAGER;
 
 
 @SpringBootApplication
@@ -24,7 +24,7 @@ public class SecurityApplication {
 			AuthenticationService service
 	) {
 		return args -> {
-			var admin = RegisterRequest.builder()
+			var admin = RegisterRequestDTO.builder()
 					.firstName("Admin")
 					.lastName("Admin")
 					.email("admin@mail.com")
@@ -33,7 +33,7 @@ public class SecurityApplication {
 					.build();
 			System.out.println("Admin token: " + service.register(admin).getAccessToken());
 
-			var manager = RegisterRequest.builder()
+			var manager = RegisterRequestDTO.builder()
 					.firstName("Admin")
 					.lastName("Admin")
 					.email("manager@mail.com")

@@ -1,4 +1,4 @@
-package hoangnguyen.api.security.user;
+package hoangnguyen.api.security.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static hoangnguyen.api.security.user.Permission.*;
+import static hoangnguyen.api.security.enums.Permission.*;
 
 @RequiredArgsConstructor
 public enum Role {

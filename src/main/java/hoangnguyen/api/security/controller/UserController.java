@@ -1,5 +1,7 @@
-package hoangnguyen.api.security.user;
+package hoangnguyen.api.security.controller;
 
+import hoangnguyen.api.security.services.UserService;
+import hoangnguyen.api.security.DTO.ChangePasswordRequestDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -17,7 +19,7 @@ public class UserController {
 
     @PatchMapping
     public ResponseEntity<?> changePassword(
-            @RequestBody ChangePasswordRequest request,
+            @RequestBody ChangePasswordRequestDTO request,
             Principal connectedUser
     ){
         userService.changePassword(request,connectedUser);

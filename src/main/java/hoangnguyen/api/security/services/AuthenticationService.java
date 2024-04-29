@@ -1,13 +1,14 @@
-package hoangnguyen.api.security.auth;
+package hoangnguyen.api.security.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import hoangnguyen.api.security.config.JwtService;
-import hoangnguyen.api.security.token.Token;
-import hoangnguyen.api.security.token.TokenRepository;
-import hoangnguyen.api.security.token.TokenType;
-import hoangnguyen.api.security.user.Role;
-import hoangnguyen.api.security.user.User;
-import hoangnguyen.api.security.user.UserRepository;
+import hoangnguyen.api.security.DTO.AuthenticationRequestDTO;
+import hoangnguyen.api.security.DTO.AuthenticationResponseDTO;
+import hoangnguyen.api.security.DTO.RegisterRequestDTO;
+import hoangnguyen.api.security.models.Token;
+import hoangnguyen.api.security.repositories.TokenRepository;
+import hoangnguyen.api.security.enums.TokenType;
+import hoangnguyen.api.security.models.User;
+import hoangnguyen.api.security.repositories.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +29,7 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(RegisterRequest request) {
+    public AuthenticationResponseDTO register(RegisterRequestDTO request) {
         var user = User.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
@@ -40,13 +41,13 @@ public class AuthenticationService {
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
         saveUserToken(savedUser,jwtToken);
-        return AuthenticationResponse.builder()
+        return AuthenticationResponseDTO.builder()
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
                 .build();
     }
 
-    public AuthenticationResponse authenticate(AuthenticationRequest request) {
+    public AuthenticationResponseDTO authenticate(AuthenticationRequestDTO request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
@@ -58,7 +59,7 @@ public class AuthenticationService {
         var refreshToken = jwtService.generateRefreshToken(user);
         revokedAllUserTokens(user);
         saveUserToken(user,jwtToken);
-        return AuthenticationResponse.builder()
+        return AuthenticationResponseDTO.builder()
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
                 .build();
@@ -103,7 +104,7 @@ public class AuthenticationService {
                 var accessToken = jwtService.generateToken(user);
                 revokedAllUserTokens(user);
                 saveUserToken(user,accessToken);
-                var authResponse = AuthenticationResponse.builder()
+                var authResponse = AuthenticationResponseDTO.builder()
                         .accessToken(accessToken)
                         .refreshToken(refreshToken)
                         .build();

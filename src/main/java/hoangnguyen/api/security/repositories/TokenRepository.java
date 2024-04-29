@@ -1,5 +1,6 @@
-package hoangnguyen.api.security.token;
+package hoangnguyen.api.security.repositories;
 
+import hoangnguyen.api.security.models.Token;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

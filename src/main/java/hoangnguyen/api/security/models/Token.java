@@ -1,6 +1,6 @@
-package hoangnguyen.api.security.token;
+package hoangnguyen.api.security.models;
 
-import hoangnguyen.api.security.user.User;
+import hoangnguyen.api.security.enums.TokenType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,6 +1,6 @@
 package hoangnguyen.api.security.config;
 
-import hoangnguyen.api.security.user.UserRepository;
+import hoangnguyen.api.security.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
