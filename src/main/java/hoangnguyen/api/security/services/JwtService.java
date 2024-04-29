@@ -1,4 +1,4 @@
-package hoangnguyen.api.security.config;
+package hoangnguyen.api.security.services;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

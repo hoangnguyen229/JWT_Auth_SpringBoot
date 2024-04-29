@@ -1,21 +1,21 @@
-package hoangnguyen.api.security.user;
+package hoangnguyen.api.security.services;
 
+import hoangnguyen.api.security.models.User;
+import hoangnguyen.api.security.repositories.UserRepository;
+import hoangnguyen.api.security.DTO.ChangePasswordRequestDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository repository;
-    public void changePassword(ChangePasswordRequest request, Principal connectedUser){
+    public void changePassword(ChangePasswordRequestDTO request, Principal connectedUser){
         var user = (User) ((UsernamePasswordAuthenticationToken)connectedUser).getPrincipal();
 
         if(!passwordEncoder.matches(request.getCurrentPassword(), user.getPassword())){

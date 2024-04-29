@@ -1,6 +1,7 @@
 package hoangnguyen.api.security.config;
 
-import hoangnguyen.api.security.token.TokenRepository;
+import hoangnguyen.api.security.repositories.TokenRepository;
+import hoangnguyen.api.security.services.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

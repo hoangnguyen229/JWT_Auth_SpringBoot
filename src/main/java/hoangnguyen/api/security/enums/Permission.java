@@ -1,4 +1,4 @@
-package hoangnguyen.api.security.user;
+package hoangnguyen.api.security.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

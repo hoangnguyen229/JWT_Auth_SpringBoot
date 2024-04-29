@@ -1,5 +1,9 @@
-package hoangnguyen.api.security.auth;
+package hoangnguyen.api.security.controller;
 
+import hoangnguyen.api.security.DTO.AuthenticationRequestDTO;
+import hoangnguyen.api.security.DTO.AuthenticationResponseDTO;
+import hoangnguyen.api.security.DTO.RegisterRequestDTO;
+import hoangnguyen.api.security.services.AuthenticationService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -18,15 +22,15 @@ public class AuthenticationController {
 
     private final AuthenticationService authService;
     @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(
-            @RequestBody RegisterRequest request
+    public ResponseEntity<AuthenticationResponseDTO> register(
+            @RequestBody RegisterRequestDTO request
     ){
         return ResponseEntity.ok(authService.register(request));
     }
 
     @PostMapping("/authenticate")
-    public ResponseEntity<AuthenticationResponse> authenticate(
-            @RequestBody AuthenticationRequest request
+    public ResponseEntity<AuthenticationResponseDTO> authenticate(
+            @RequestBody AuthenticationRequestDTO request
     ){
         return ResponseEntity.ok(authService.authenticate(request));
     }

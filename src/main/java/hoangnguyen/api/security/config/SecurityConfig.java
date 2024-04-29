@@ -6,16 +6,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
-import static hoangnguyen.api.security.user.Permission.*;
-import static hoangnguyen.api.security.user.Role.ADMIN;
-import static hoangnguyen.api.security.user.Role.MANAGER;
+import static hoangnguyen.api.security.enums.Permission.*;
+import static hoangnguyen.api.security.enums.Role.ADMIN;
+import static hoangnguyen.api.security.enums.Role.MANAGER;
 import static org.springframework.http.HttpMethod.*;
 import static org.springframework.http.HttpMethod.DELETE;
 
